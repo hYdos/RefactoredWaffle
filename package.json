@@ -1,0 +1,23 @@
+{
+  "name": "refactored_waffle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hYdos/RefactoredWaffle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hYdos/RefactoredWaffle/issues"
+  },
+  "homepage": "https://github.com/hYdos/RefactoredWaffle#readme",
+  "devDependencies": {
+    "electron": "^10.1.5"
+  }
+}

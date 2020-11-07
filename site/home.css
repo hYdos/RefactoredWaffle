@@ -3,10 +3,18 @@ body {
     background-color: #444a4f;
 }
 
-h1{
+h1 {
     color: aliceblue;
 }
 
-h2{
+h2 {
     color: aliceblue;
+}
+
+.text-white {
+    color: aliceblue;
+}
+
+.pad-top {
+    padding-top: 10%;
 }

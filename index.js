@@ -1,5 +1,5 @@
 const electron = require('electron');
-const {app, BrowserWindow} = electron;
+const {app, BrowserWindow, NativeImage} = electron;
 const ipcMain = electron.ipcMain;
 const dialog = electron.dialog;
 
@@ -11,7 +11,8 @@ function createWindow() {
         height: 600,
         webPreferences: {
             nodeIntegration: true
-        }
+        },
+        icon: 'site/icon.png'
     })
   
     window.loadFile('site/index.html');

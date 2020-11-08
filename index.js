@@ -11,7 +11,8 @@ function createWindow() {
         height: 600,
         webPreferences: {
             nodeIntegration: true
-        }
+        },
+        icon: 'site/icon.png'
     })
   
     window.loadFile('site/index.html');

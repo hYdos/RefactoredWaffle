@@ -38,11 +38,11 @@
     <!-- <div class="progress" id="prog-bar"> -->
     <!-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div> -->
     <!-- </div> -->
-    <ul class="left-sidebar bg-dark list-group">
-        <button class="list-group-item active" data-toggle="list">Blockstate Editor</button>
-        <button class="list-group-item bg-dark text-white" data-toggle="list">Item Editor</button>
-        <button class="list-group-item bg-dark text-white" data-toggle="list">Block Editor</button>
-        <button class="list-group-item bg-dark text-white" data-toggle="list">Lang Editor</button>
+    <ul class="left-sidebar bg-dark list-group" id="editor_selector">
+        <button class="list-group-item active" data-toggle="list" id="blockstate_editor" onclick="openEditor('blockstate_editor');">Blockstate Editor</button>
+        <button class="list-group-item bg-dark text-white" data-toggle="list" id="item_editor" onclick="openEditor('item_editor');">Item Editor</button>
+        <button class="list-group-item bg-dark text-white" data-toggle="list" id="block_editor" onclick="openEditor('block_editor');">Block Editor</button>
+        <button class="list-group-item bg-dark text-white" data-toggle="list" id="lang_editor" onclick="openEditor('lang_editor');">Lang Editor</button>
         <button class="list-group-item bg-dark text-white" data-toggle="list">Etc, etc</button>
     </ul>
     <div class="left-album rounded bg-dark" style="padding-left: 10px">
@@ -83,5 +83,6 @@
         </div>
     </div>
     <script src="editor.js"></script>
+    <script src="projectManager.js"></script>
 </body>
 </html>

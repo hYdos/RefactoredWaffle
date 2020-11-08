@@ -43,6 +43,7 @@ ipcRenderer.on('setProjectDir', (event, arg) => {
     util.readDirectory(projectDir).then(files => {
         setupProject(files).then(() => {
             // document.getElementById("prog-bar").style.visibility = "hidden";
+            document.getElementById("popup").style.visibility = "hidden";
             console.log("setup complete!");
         });
     });

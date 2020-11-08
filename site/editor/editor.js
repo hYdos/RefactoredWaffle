@@ -80,11 +80,11 @@ async function locateAssets() {
     for (let namespace of projectInfo.availableNamespaces) {
         console.log(assetDir + "/" + namespace + "/blockstates");
         const files = await util.readDirectory(assetDir + "/" + namespace + "/blockstates");
-        files.forEach((file) =>{
-            console.log("Analysing " + file);
-            let fileContent = await util.readFile(file);
-            readBlockstate(namespace, file, fileContent);
-        })
+        await Promise.all(files.map(function (file) {
+            return util.readFile(assetDir + "/" + namespace + "/blockstates/" + file).then(content => {
+                readBlockstate(namespace, file, content);
+            });
+        }))
     }
 }
 
@@ -96,7 +96,10 @@ function locateData() {
 }
 
 function readBlockstate(namespace, fileName, fileContent) {
-    let fullName = namespace + ":" + fileName.replace(".json", "");
+    let realName = namespace + ":" + fileName.replace(".json", "");
+    let json = JSON.parse(fileContent);
+    json.identifier = realName;
+    projectInfo.assets.blockstates.push(json);
 }
 
 

@@ -1,5 +1,5 @@
 const electron = require('electron');
-const {app, BrowserWindow, NativeImage} = electron;
+const {app, BrowserWindow} = electron;
 const ipcMain = electron.ipcMain;
 const dialog = electron.dialog;
 

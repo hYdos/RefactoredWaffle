@@ -71,3 +71,21 @@ h2 {
     width: 100%;
     height: 100%;
 }
+
+.hoverblue:hover {
+    background: #1c8aff;
+    animation: fadeIn ease 0.2s;
+}
+
+.fade-in {
+    animation: fadeIn ease 0.5s;
+}
+
+.slow-fade-in {
+    animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}

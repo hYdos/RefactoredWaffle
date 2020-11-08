@@ -36,7 +36,7 @@ function resetProjectInfo() {
 
 ipcRenderer.on('setProjectDir', (event, arg) => {
     projectDir = arg.filePaths[0];
-    if(projectDir == undefined){
+    if (projectDir == undefined) {
         return;
     }
     // document.getElementById("prog-bar").style.visibility = "visible";
@@ -50,7 +50,8 @@ ipcRenderer.on('setProjectDir', (event, arg) => {
 
 async function setupProject(files) {
     resetProjectInfo();
-    await Promise.all(files.map(function (file) {
+
+    await Promise.all(files.map(file => {
         return util.stat(projectDir + "/" + file).then(e => {
             if (e.isDirectory()) {
                 if (file === "assets") {
@@ -64,6 +65,7 @@ async function setupProject(files) {
             }
         });
     }));
+
     await findNamespaces();
     await locateAssets();
     locateData();
@@ -75,7 +77,7 @@ async function setupProject(files) {
 async function findNamespaces() {
     let files = await util.readDirectory(assetDir);
     //Assume all 'files' here are namespaces
-    files.forEach(function (file) {
+    files.forEach(file => {
         projectInfo.availableNamespaces.push(file);
     })
 }
@@ -88,18 +90,14 @@ async function locateAssets() {
     for (let namespace of projectInfo.availableNamespaces) {
         console.log(assetDir + "/" + namespace + "/blockstates");
         let files = await util.readDirectory(assetDir + "/" + namespace + "/blockstates");
-        await Promise.all(files.map(function (file) {
-            return util.readFile(assetDir + "/" + namespace + "/blockstates/" + file).then(content => {
-                readBlockstate(namespace, file, content);
-            });
-        }))
+        await Promise.all(files.map(file => util.readFile(assetDir + "/" + namespace + "/blockstates/" + file).then(content => {
+            readBlockstate(namespace, file, content);
+        })))
 
         files = await util.readDirectory(assetDir + "/" + namespace + "/lang");
-        await Promise.all(files.map(function (file) {
-            return util.readFile(assetDir + "/" + namespace + "/lang/" + file).then(content => {
-                readLangFile(namespace, file, content);
-            });
-        }))
+        await Promise.all(files.map(file => util.readFile(assetDir + "/" + namespace + "/lang/" + file).then(content => {
+            readLangFile(namespace, file, content);
+        })))
     }
 }
 

@@ -27,3 +27,12 @@ h2 {
     margin-right: auto;
     margin-left: auto;
 }
+
+
+.left-sidebar {
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    color: aliceblue;
+    background-color: #363b3f;
+}

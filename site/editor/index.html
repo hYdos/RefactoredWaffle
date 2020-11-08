@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <!--Bootstrap Css and Js-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
@@ -13,7 +13,6 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
 </head>
 <body>
-<script src="editor.js"></script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="../index.html">
         <img src="https://discord.com/assets/e3585a83e0de8f33dc85d02bba5da810.svg" width="30" height="30" alt="">
@@ -36,9 +35,16 @@
         </ul>
     </div>
 </nav>
-<div class="progress" hidden>
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-</div>
+<!-- <div class="progress" id="prog-bar"> -->
+    <!-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div> -->
+<!-- </div> -->
+<ul class="left-sidebar bg-dark list-group">
+    <button class="list-group-item active" data-toggle="list">Blockstate Editor</button>
+    <button class="list-group-item bg-dark text-white" data-toggle="list">Item Editor</button>
+    <button class="list-group-item bg-dark text-white" data-toggle="list">Block Editor</button>
+    <button class="list-group-item bg-dark text-white" data-toggle="list">Lang Editor</button>
+    <button class="list-group-item bg-dark text-white" data-toggle="list">Etc, etc</button>
+  </ul>
 <div class="container pad-top height-long">
     <div class="jumbotron bg-dark">
         <h1 class="display-4">Asset Manager</h1>
@@ -50,5 +56,6 @@
         </p>
     </div>
 </div>
+<script src="editor.js"></script>
 </body>
 </html>

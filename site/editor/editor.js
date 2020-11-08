@@ -1,6 +1,9 @@
 const electron = require('electron');
 const util = require('./util');
 
+//make stuff that has no use invisible
+// document.getElementById("prog-bar").style.visibility = "hidden";
+
 const ipcRenderer = electron.ipcRenderer;
 
 let projectDir;
@@ -33,8 +36,13 @@ function resetProjectInfo() {
 
 ipcRenderer.on('setProjectDir', (event, arg) => {
     projectDir = arg.filePaths[0];
+    if(projectDir == undefined){
+        return;
+    }
+    // document.getElementById("prog-bar").style.visibility = "visible";
     util.readDirectory(projectDir).then(files => {
         setupProject(files).then(() => {
+            // document.getElementById("prog-bar").style.visibility = "hidden";
             console.log("setup complete!");
         });
     });
@@ -79,10 +87,17 @@ async function locateAssets() {
     //Locate blockstates first
     for (let namespace of projectInfo.availableNamespaces) {
         console.log(assetDir + "/" + namespace + "/blockstates");
-        const files = await util.readDirectory(assetDir + "/" + namespace + "/blockstates");
+        let files = await util.readDirectory(assetDir + "/" + namespace + "/blockstates");
         await Promise.all(files.map(function (file) {
             return util.readFile(assetDir + "/" + namespace + "/blockstates/" + file).then(content => {
                 readBlockstate(namespace, file, content);
+            });
+        }))
+
+        files = await util.readDirectory(assetDir + "/" + namespace + "/lang");
+        await Promise.all(files.map(function (file) {
+            return util.readFile(assetDir + "/" + namespace + "/lang/" + file).then(content => {
+                readLangFile(namespace, file, content);
             });
         }))
     }
@@ -100,6 +115,13 @@ function readBlockstate(namespace, fileName, fileContent) {
     let json = JSON.parse(fileContent);
     json.identifier = realName;
     projectInfo.assets.blockstates.push(json);
+}
+
+function readLangFile(namespace, fileName, fileContent) {
+    let realName = namespace + ":" + fileName.replace(".json", "");
+    let json = JSON.parse(fileContent);
+    json.identifier = realName;
+    projectInfo.assets.langFiles.push(json);
 }
 
 

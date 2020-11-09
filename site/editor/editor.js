@@ -4,6 +4,10 @@ const ipcRenderer = electron.ipcRenderer;
 
 let currentEditor = "blockstate_editor";
 
+document.getElementById("editor_selector").style.visibility = "hidden";
+document.getElementById("left-album").style.visibility = "hidden";
+document.getElementById("right-infopanel").style.visibility = "hidden";
+
 function openEditor(editor_name) {
     clearElements();
     for(let child of document.getElementById("editor_selector").children){

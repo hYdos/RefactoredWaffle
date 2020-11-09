@@ -21,23 +21,26 @@
         <button class="list-group-item active hoverblue" data-toggle="list" id="blockstate_editor" onclick="openEditor('blockstate_editor');">Blockstates</button>
         <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="item_editor" onclick="openEditor('item_editor');">Items</button>
         <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="block_editor" onclick="openEditor('block_editor');">Blocks</button>
-        <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="lang_editor" onclick="openEditor('texture_editor');">Textures</button>
-        <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="lang_editor" onclick="openEditor('sound_editor');">Sounds</button>
-        <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="lang_editor" onclick="openEditor('dim_editor');">Dimensions</button>
-        <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="lang_editor" onclick="openEditor('dim_key_editor');">DimensonKeys</button>
-        <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="lang_editor" onclick="openEditor('advancements_editor');">Advancements</button>
+        <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="texture_editor" onclick="openEditor('texture_editor');">Textures</button>
+        <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="sound_editor" onclick="openEditor('sound_editor');">Sounds</button>
+        <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="dim_editor" onclick="openEditor('dim_editor');">Dimensions</button>
+        <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="dim_key_editor" onclick="openEditor('dim_key_editor');">DimensonKeys</button>
+        <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="advancements_editor" onclick="openEditor('advancements_editor');">Advancements</button>
         <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="lang_editor" onclick="openEditor('lang_editor');">Langs</button>
     </ul>
-    <div class="left-album rounded bg-dark" style="padding-left: 10px">
+
+    <div id="left-album" class="rounded bg-dark" style="padding-left: 10px">
         <div class="row">
             <div class="col-md-3" id="blockstate-holder">
             </div>
         </div>
     </div>
-    <div class="right-infopannel rounded album bg-dark" style="padding-left: 10px">
+
+    <div id="right-infopanel" class="rounded album bg-dark" style="padding-left: 10px">
     </div>
-    <div id="popup" class="container pad-top height-long center-all pad-left onTop">
-        <div class="jumbotron bg-dark onTop">
+    
+    <div id="popup" class="container pad-top height-long center-all onTop">
+        <div class="jumbotron bg-secondary">
             <h1 class="display-4">Asset Manager</h1>
             <p class="lead text-white">Select an asset folder to work on</p>
             <hr class="my-4">

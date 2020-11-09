@@ -36,6 +36,9 @@ ipcRenderer.on('setProjectDir', (event, arg) => {
         setupProject(files).then(() => {
             // document.getElementById("prog-bar").style.visibility = "hidden";
             document.getElementById("popup").style.visibility = "hidden";
+            document.getElementById("editor_selector").style.visibility = "visible";
+            document.getElementById("left-album").style.visibility = "visible";
+            document.getElementById("right-infopanel").style.visibility = "visible";
             renderData(projectInfo);
         });
     });
@@ -81,7 +84,6 @@ async function findNamespaces() {
 async function locateAssets() {
     //Locate blockstates first
     for (let namespace of projectInfo.availableNamespaces) {
-        console.log(assetDir + "/" + namespace + "/blockstates");
         let files = await util.readDirectory(assetDir + "/" + namespace + "/blockstates");
         await Promise.all(files.map(file => util.readFile(assetDir + "/" + namespace + "/blockstates/" + file).then(content => {
             readBlockstate(namespace, file, content);

@@ -46,7 +46,6 @@ ipcRenderer.on('setProjectDir', (event, arg) => {
 
 async function setupProject(files) {
     resetProjectInfo();
-
     await Promise.all(files.map(file => {
         return util.stat(projectDir + "/" + file).then(e => {
             if (e.isDirectory()) {
@@ -61,10 +60,9 @@ async function setupProject(files) {
             }
         });
     }));
-
     await findNamespaces();
     await locateAssets();
-    locateData();
+    await locateData();
 }
 
 /**
@@ -90,16 +88,22 @@ async function locateAssets() {
         })))
 
         files = await util.readDirectory(assetDir + "/" + namespace + "/lang");
-        await Promise.all(files.map(file => util.readFile(assetDir + "/" + namespace + "/lang/" + file).then(content => {
-            readLangFile(namespace, file, content);
-        })))
+        await findAllFilesIn(assetDir + "/" + namespace + "/lang/" + file, function e() {
+
+        })
     }
+}
+
+async function findAllFilesIn(dir, callback) {
+    Promise.all(files.map(file => util.readFile(dir).then(content => {
+        console.log(content.isFolder());
+    })))
 }
 
 /**
  *  for locating datapack related things
  */
-function locateData() {
+async function locateData() {
 
 }
 
@@ -115,4 +119,9 @@ function readLangFile(namespace, fileName, fileContent) {
     let json = JSON.parse(fileContent);
     json.identifier = realName;
     projectInfo.assets.langFiles.push(json);
+}
+
+function readTextureFile(namespace, fileName, relativePath) {
+
+
 }

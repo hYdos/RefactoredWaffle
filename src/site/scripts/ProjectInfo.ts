@@ -6,7 +6,7 @@ type ProjectInfo = {
         itemModels: string[]
         langFiles: string[]
         sounds: string[]
-        textures: string[]
+        textures: any[]
     }
     data: {
         dimensions: string[],

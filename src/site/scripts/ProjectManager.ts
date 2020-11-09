@@ -1,5 +1,5 @@
 import {promises} from "fs";
-import {join} from "path";
+import {join, basename} from "path";
 import {ipcRenderer} from "electron";
 import {renderData} from "./Editor";
 import {walk} from "./Util";
@@ -96,8 +96,14 @@ async function locateAssets() {
             readBlockState(namespace, file, (await promises.readFile(join(assetDir, namespace, 'blockstates', file))).toString());
         }
 
-        files = await walk(join(assetDir, namespace, "textures"));
-        console.log(files);
+        let texturesDir = join(assetDir, namespace, "textures");
+
+        files = await walk(texturesDir);
+        for (let absoluteFilePath of files) {
+            let fileName = basename(absoluteFilePath);
+            let relativeTexturePath = absoluteFilePath.replace(texturesDir, "").substring(1);
+            readTextureFile(namespace, fileName, relativeTexturePath, false); //Assume all textures are not animated for now
+        }
     }
 }
 
@@ -122,7 +128,13 @@ function readLangFile(namespace: string, fileName: string, fileContent: string) 
     projectInfo.assets.langFiles.push(json);
 }
 
-function readTextureFile(namespace: string, fileName: string, relativePath: string) {
-
-
+function readTextureFile(namespace: string, fileName: string, relativePath: string, isAnimated: boolean) {
+    console.log(projectInfo);
+    let textureJson = {
+        animated: isAnimated,
+        namespace: namespace,
+        name: fileName,
+        relativePath: relativePath
+    }
+    projectInfo.assets.textures.push(textureJson);
 }

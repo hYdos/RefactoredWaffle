@@ -1,4 +1,4 @@
-import {promises, Stats} from "fs";
+import {promises} from "fs";
 import {ipcRenderer} from "electron";
 import {renderData} from "./Editor";
 import {walk} from "./Util";
@@ -53,20 +53,20 @@ ipcRenderer.on('setProjectDir', (event, arg) => {
 async function setupProject(files: string[]) {
     resetProjectInfo();
 
-    await Promise.all(files.map(file => {
-        return promises.stat(projectDir + "/" + file).then((e: Stats) => {
-            if (e.isDirectory()) {
-                if (file === "assets") {
-                    console.log("Found asset dir!");
-                    assetDir = projectDir + "/" + file;
-                }
-                if (file === "data") {
-                    console.log("Found data dir!");
-                    dataDir = projectDir + "/" + file;
-                }
+    for (let file of files) {
+        if ((await promises.stat(projectDir + "/" + file)).isDirectory()) {
+            if (file === "assets") {
+                console.log("Found asset dir!");
+                assetDir = projectDir + "/" + file;
             }
-        });
-    }));
+
+            if (file === "data") {
+                console.log("Found data dir!");
+                dataDir = projectDir + "/" + file;
+            }
+        }
+    }
+
     await findNamespaces();
     await locateAssets();
     await locateData();

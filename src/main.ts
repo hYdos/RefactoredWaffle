@@ -19,6 +19,11 @@ function createWindow() {
         });
     });
 
+    mainWindow.webContents.on('new-window', (event, url) => {
+        event.preventDefault();
+        mainWindow.webContents.send('blocked-new-window', url);
+    });
+
     mainWindow.loadFile(path.join(__dirname, '..', 'src', 'site', 'html', 'index.html'));
 }
 

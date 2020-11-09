@@ -38,12 +38,14 @@ function renderData() {
 }
 
 function createBlockstateElement(blockStateName) {
+    let elementCol = document.createElement("div");
     let element = document.createElement("div");
     let image = document.createElement("img");
     let nameContainer = document.createElement("div");
     let name = document.createElement("p");
 
     element.setAttribute("class", "card mb-3 box-shadow clickableDiv");
+    elementCol.setAttribute("class", "col-md-3");
     element.setAttribute("onclick", "alert('clicked')");
     image.setAttribute("class", "card-img-top");
     image.setAttribute("src", "https://cdn.discordapp.com/emojis/699813968159571979.png?v=1");
@@ -55,10 +57,11 @@ function createBlockstateElement(blockStateName) {
     element.appendChild(image);
     element.appendChild(nameContainer);
     nameContainer.appendChild(name);
+    elementCol.appendChild(element);
 
-    document.getElementById("blockstate-holder").appendChild(element);
+    document.getElementById("blockstate_row").appendChild(elementCol);
 }
 
 function clearElements(){
-    document.getElementById("blockstate-holder").innerHTML = "";
+    document.getElementById("blockstate_row").innerHTML = "";
 }

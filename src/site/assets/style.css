@@ -15,6 +15,10 @@ h2 {
     padding-top: 10%;
 }
 
+.light-padding {
+    padding-right: 10px;
+}
+
 .left-sidebar {
     position: absolute;
     width: 15%;
@@ -26,7 +30,7 @@ h2 {
 #left-album {
     z-index: -1;
     position: absolute;
-    width: 50%;
+    width: 52%;
     left: 16%;
     top: 8%;
     height: 90%;
@@ -38,7 +42,7 @@ h2 {
     z-index: -1;
     position: absolute;
     width: 30%;
-    right: 2%;
+    right: 1%;
     top: 8%;
     height: 90%;
     color: aliceblue;

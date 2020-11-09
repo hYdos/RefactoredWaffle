@@ -1,5 +1,5 @@
 body {
-    height: 100%;
+    height: 100vh;
     background-color: #444a4f;
 }
 
@@ -102,11 +102,20 @@ h2 {
 
 #prog-bar {
     position: fixed;
-    bottom: 0px;
+    bottom: 0;
     width: 100%;
     height: 1%;
 }
 
 button:focus {
     outline-width: 0;
+}
+
+#blockstate_row {
+    font-size: 12px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 17px;
+    box-sizing: content-box;
 }

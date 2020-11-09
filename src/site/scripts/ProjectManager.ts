@@ -131,7 +131,6 @@ function readLangFile(namespace: string, fileName: string, fileContent: string) 
 }
 
 function readTextureFile(namespace: string, fileName: string, relativePath: string, isAnimated: boolean) {
-    console.log(projectInfo);
     let textureJson = {
         animated: isAnimated,
         namespace: namespace,

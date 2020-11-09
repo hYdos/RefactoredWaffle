@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <!--Bootstrap Css and Js-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <title>Refactored Waffle</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+  </head>
+  <body style="overflow: hidden" class="fade-in">
+    <ul class="left-sidebar bg-dark list-group" id="editor_selector">
+      <button class="list-group-item active hoverblue" data-toggle="list" id="blockstate_editor"
+              onclick="openEditor('blockstate_editor');">Blockstates
+      </button>
+      <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="item_editor"
+              onclick="openEditor('item_editor');">Items
+      </button>
+      <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="block_editor"
+              onclick="openEditor('block_editor');">Blocks
+      </button>
+      <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="texture_editor"
+              onclick="openEditor('texture_editor');">Textures
+      </button>
+      <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="sound_editor"
+              onclick="openEditor('sound_editor');">Sounds
+      </button>
+      <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="dim_editor"
+              onclick="openEditor('dim_editor');">Dimensions
+      </button>
+      <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="dim_key_editor"
+              onclick="openEditor('dim_key_editor');">DimensonKeys
+      </button>
+      <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="advancements_editor"
+              onclick="openEditor('advancements_editor');">Advancements
+      </button>
+      <button class="list-group-item bg-dark text-white hoverblue" data-toggle="list" id="lang_editor"
+              onclick="openEditor('lang_editor');">Langs
+      </button>
+    </ul>
+
+    <div id="left-album" class="rounded bg-dark" style="padding-left: 10px">
+      <div class="row" id="blockstate_row">
+      </div>
+    </div>
+
+    <div id="right-infopanel" class="rounded album bg-dark" style="padding-left: 10px">
+    </div>
+
+    <div id="popup" class="container pad-top height-long center-all onTop">
+      <div class="jumbotron secondary-bg-dark">
+        <h1 class="display-4">Asset Manager</h1>
+        <p class="lead text-white">Select an asset/data folder to work on</p>
+        <hr class="my-4">
+        <p class="text-white">Or select a new one</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg text-white" onclick="openProject();" role="button">Open Assets</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="progress secondary-bg-dark" id="prog-bar">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"
+           aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+    </div>
+    <script>
+        require('../scripts/Editor');
+        require('../scripts/ProjectManager');
+    </script>
+  </body>
+</html>

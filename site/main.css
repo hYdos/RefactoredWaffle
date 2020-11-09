@@ -91,3 +91,18 @@ h2 {
 .clickableDiv {
     cursor: pointer;
 }
+
+.secondary-bg-dark {
+    background-color: #373C3F;
+}
+
+#prog-bar {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 1%;
+}
+
+button:focus {
+    outline-width: 0;
+}

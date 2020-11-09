@@ -9,7 +9,6 @@ document.getElementById("left-album").style.visibility = "hidden";
 document.getElementById("right-infopanel").style.visibility = "hidden";
 
 function openEditor(editor_name) {
-    clearElements();
     for(let child of document.getElementById("editor_selector").children){
         if(child.getAttribute("id") === editor_name){
             child.setAttribute("class", "list-group-item active hoverblue");
@@ -26,7 +25,13 @@ function openProject() {
 }
 
 function renderData() {
+    clearElements();
+    document.getElementById("left-album").style.visibility = "hidden";
+    document.getElementById("right-infopanel").style.visibility = "hidden";
+
     if(currentEditor === "blockstate_editor"){
+        document.getElementById("left-album").style.visibility = "visible";
+        document.getElementById("right-infopanel").style.visibility = "visible";
         for(blockstateElement of projectInfo.assets.blockstates){
             createBlockstateElement(blockstateElement.identifier);
         }

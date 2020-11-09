@@ -26,19 +26,19 @@ function resetProjectInfo() {
     };
 }
 
+document.getElementById("prog-bar").style.visibility = "hidden";
+
 ipcRenderer.on('setProjectDir', (event, arg) => {
     projectDir = arg.filePaths[0];
     if (projectDir === undefined) {
         return;
     }
-    // document.getElementById("prog-bar").style.visibility = "visible";
+    document.getElementById("prog-bar").style.visibility = "visible";
     util.readDirectory(projectDir).then(files => {
         setupProject(files).then(() => {
-            // document.getElementById("prog-bar").style.visibility = "hidden";
+            document.getElementById("prog-bar").style.visibility = "hidden";
             document.getElementById("popup").style.visibility = "hidden";
             document.getElementById("editor_selector").style.visibility = "visible";
-            document.getElementById("left-album").style.visibility = "visible";
-            document.getElementById("right-infopanel").style.visibility = "visible";
             renderData(projectInfo);
         });
     });

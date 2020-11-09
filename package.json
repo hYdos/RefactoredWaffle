@@ -19,5 +19,8 @@
   "homepage": "https://github.com/hYdos/RefactoredWaffle#readme",
   "devDependencies": {
     "electron": "^10.1.5"
+  },
+  "dependencies": {
+    "async-iterator-to-array": "0.0.1"
   }
 }

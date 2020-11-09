@@ -1,5 +1,4 @@
 const electron = require('electron');
-const util = require("./util");
 const ipcRenderer = electron.ipcRenderer;
 
 let currentEditor = "blockstate_editor";

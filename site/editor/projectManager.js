@@ -1,3 +1,5 @@
+const util = require("./util");
+
 let projectDir;
 let assetDir;
 let dataDir;
@@ -87,17 +89,9 @@ async function locateAssets() {
             readBlockstate(namespace, file, content);
         })))
 
-        files = await util.readDirectory(assetDir + "/" + namespace + "/lang");
-        await findAllFilesIn(assetDir + "/" + namespace + "/lang/" + file, function e() {
-
-        })
+        files = await util.walk(assetDir + "/" + namespace + "/textures");
+        console.log(files);
     }
-}
-
-async function findAllFilesIn(dir, callback) {
-    Promise.all(files.map(file => util.readFile(dir).then(content => {
-        console.log(content.isFolder());
-    })))
 }
 
 /**

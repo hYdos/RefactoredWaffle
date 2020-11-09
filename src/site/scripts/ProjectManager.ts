@@ -102,7 +102,9 @@ async function locateAssets() {
         for (let absoluteFilePath of files) {
             let fileName = basename(absoluteFilePath);
             let relativeTexturePath = absoluteFilePath.replace(texturesDir, "").substring(1);
-            readTextureFile(namespace, fileName, relativeTexturePath, false); //Assume all textures are not animated for now
+            if(!fileName.includes(".mcmeta")){ //just ignore it for onw
+                readTextureFile(namespace, fileName, relativeTexturePath, false); //Assume all textures are not animated for now
+            }
         }
     }
 }

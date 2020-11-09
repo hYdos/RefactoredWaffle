@@ -28,12 +28,12 @@ h2 {
 }
 
 #left-album {
-    z-index: -1;
     position: absolute;
     width: 52%;
     left: 16%;
     top: 8%;
     height: 90%;
+    overflow-y: auto;
     color: aliceblue;
     background-color: #363b3f;
 }

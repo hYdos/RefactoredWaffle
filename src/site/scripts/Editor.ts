@@ -1,5 +1,5 @@
-const electron = require('electron');
-const ipcRenderer = electron.ipcRenderer;
+import {projectInfo} from "./ProjectManager";
+import {ipcRenderer} from "electron";
 
 let currentEditor = "blockstate_editor";
 
@@ -7,13 +7,14 @@ document.getElementById("editor_selector").style.visibility = "hidden";
 document.getElementById("left-album").style.visibility = "hidden";
 document.getElementById("right-infopanel").style.visibility = "hidden";
 
-function openEditor(editor_name) {
-    for(let child of document.getElementById("editor_selector").children){
-        if(child.getAttribute("id") === editor_name){
+function openEditor(editor_name: string) {
+    // @ts-ignore
+    for (let child of [...document.getElementById("editor_selector").children]) {
+        if (child.getAttribute("id") === editor_name) {
             child.setAttribute("class", "list-group-item active hoverblue");
             currentEditor = editor_name;
             renderData();
-        }else {
+        } else {
             child.setAttribute("class", "list-group-item bg-dark text-white hoverblue");
         }
     }
@@ -23,21 +24,29 @@ function openProject() {
     ipcRenderer.send('openProject');
 }
 
-function renderData() {
+// Let DOM know about this
+
+// @ts-ignore
+window.openProject = openProject;
+
+// @ts-ignore
+window.openEditor = openEditor;
+
+export function renderData() {
     clearElements();
     document.getElementById("left-album").style.visibility = "hidden";
     document.getElementById("right-infopanel").style.visibility = "hidden";
 
-    if(currentEditor === "blockstate_editor"){
+    if (currentEditor === "blockstate_editor") {
         document.getElementById("left-album").style.visibility = "visible";
         document.getElementById("right-infopanel").style.visibility = "visible";
-        for(blockstateElement of projectInfo.assets.blockstates){
+        for (let blockstateElement of projectInfo.assets.blockStates) {
             createBlockstateElement(blockstateElement.identifier);
         }
     }
 }
 
-function createBlockstateElement(blockStateName) {
+function createBlockstateElement(blockStateName: string) {
     let elementCol = document.createElement("div");
     let element = document.createElement("div");
     let image = document.createElement("img");
@@ -62,6 +71,6 @@ function createBlockstateElement(blockStateName) {
     document.getElementById("blockstate_row").appendChild(elementCol);
 }
 
-function clearElements(){
+function clearElements() {
     document.getElementById("blockstate_row").innerHTML = "";
 }

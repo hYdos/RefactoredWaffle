@@ -1,26 +1,31 @@
 {
-  "name": "refactored_waffle",
+  "name": "refactored-waffle",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "electron ."
+  "author": "hYdos",
+  "license": "MIT",
+  "dependencies": {
+    "async-iterator-to-array": "^0.0.1",
+    "electron-reload": "^1.5.0"
   },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
+    "eslint": "^7.13.0",
+    "electron": "^10.1.5",
+    "typescript": "^4.0.5"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "eslint -c .eslintrc --ext .ts ./src",
+    "start": "npm run build && electron ./src/main.js"
+  },
+  "homepage": "https://github.com/hYdos/RefactoredWaffle#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hYdos/RefactoredWaffle.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/hYdos/RefactoredWaffle/issues"
-  },
-  "homepage": "https://github.com/hYdos/RefactoredWaffle#readme",
-  "devDependencies": {
-    "electron": "^10.1.5"
-  },
-  "dependencies": {
-    "async-iterator-to-array": "0.0.1"
   }
 }

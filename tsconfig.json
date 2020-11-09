@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "alwaysStrict": true,
+    "baseUrl": "src",
+    "charset": "UTF-8",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "paths": {
+      "*": ["node_modules/*"]
+    },
+    "sourceMap": true,
+    "target": "ES2020"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

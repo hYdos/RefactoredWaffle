@@ -1,24 +1,28 @@
-const util = require("./util");
+import {promises, Stats} from "fs";
+import {ipcRenderer} from "electron";
+import {renderData} from "./Editor";
+import {walk} from "./Util";
 
-let projectDir;
-let assetDir;
-let dataDir;
+let projectDir: string;
+let assetDir: string;
+let dataDir: string;
 
-let projectInfo;
+export let projectInfo: ProjectInfo;
+
 resetProjectInfo();
 
 function resetProjectInfo() {
     projectInfo = {
         availableNamespaces: [],
         assets: {
-            blockstates: [],
+            blockStates: [],
             blockModels: [],
             itemModels: [],
             langFiles: [],
             sounds: [],
             textures: []
         },
-        datapacks: {
+        data: {
             dimensions: [],
             dimensionKeys: [],
             advancements: [],
@@ -36,20 +40,21 @@ ipcRenderer.on('setProjectDir', (event, arg) => {
         return;
     }
     document.getElementById("prog-bar").style.visibility = "visible";
-    util.readDirectory(projectDir).then(files => {
+    promises.readdir(projectDir).then((files: string[]) => {
         setupProject(files).then(() => {
             document.getElementById("prog-bar").style.visibility = "hidden";
             document.getElementById("popup").style.visibility = "hidden";
             document.getElementById("editor_selector").style.visibility = "visible";
-            renderData(projectInfo);
+            renderData();
         });
     });
 })
 
-async function setupProject(files) {
+async function setupProject(files: string[]) {
     resetProjectInfo();
+
     await Promise.all(files.map(file => {
-        return util.stat(projectDir + "/" + file).then(e => {
+        return promises.stat(projectDir + "/" + file).then((e: Stats) => {
             if (e.isDirectory()) {
                 if (file === "assets") {
                     console.log("Found asset dir!");
@@ -71,9 +76,9 @@ async function setupProject(files) {
  *  for locating namespaces. for example "minecraft", "cool_mod_id"
  */
 async function findNamespaces() {
-    let files = await util.readDirectory(assetDir);
+    let files = await promises.readdir(assetDir);
     //Assume all 'files' here are namespaces
-    files.forEach(file => {
+    files.forEach((file: string) => {
         projectInfo.availableNamespaces.push(file);
     })
 }
@@ -84,12 +89,13 @@ async function findNamespaces() {
 async function locateAssets() {
     //Locate blockstates first
     for (let namespace of projectInfo.availableNamespaces) {
-        let files = await util.readDirectory(assetDir + "/" + namespace + "/blockstates");
-        await Promise.all(files.map(file => util.readFile(assetDir + "/" + namespace + "/blockstates/" + file).then(content => {
-            readBlockstate(namespace, file, content);
-        })))
+        let files = await promises.readdir(assetDir + "/" + namespace + "/blockstates");
 
-        files = await util.walk(assetDir + "/" + namespace + "/textures");
+        for (let file of files) {
+            readBlockState(namespace, file, (await promises.readFile(assetDir + '/' + namespace + '/blockstates/' + file)).toString());
+        }
+
+        files = await walk(assetDir + "/" + namespace + "/textures");
         console.log(files);
     }
 }
@@ -101,21 +107,21 @@ async function locateData() {
 
 }
 
-function readBlockstate(namespace, fileName, fileContent) {
+function readBlockState(namespace: string, fileName: string, fileContent: string) {
     let realName = namespace + ":" + fileName.replace(".json", "");
     let json = JSON.parse(fileContent);
     json.identifier = realName;
-    projectInfo.assets.blockstates.push(json);
+    projectInfo.assets.blockStates.push(json);
 }
 
-function readLangFile(namespace, fileName, fileContent) {
+function readLangFile(namespace: string, fileName: string, fileContent: string) {
     let realName = namespace + ":" + fileName.replace(".json", "");
     let json = JSON.parse(fileContent);
     json.identifier = realName;
     projectInfo.assets.langFiles.push(json);
 }
 
-function readTextureFile(namespace, fileName, relativePath) {
+function readTextureFile(namespace: string, fileName: string, relativePath: string) {
 
 
 }

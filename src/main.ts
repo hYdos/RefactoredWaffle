@@ -25,6 +25,7 @@ function createWindow() {
     });
 
     mainWindow.loadFile(path.join(__dirname, '..', 'src', 'site', 'html', 'index.html'));
+    mainWindow.removeMenu();
 }
 
 require('electron-reload')(__dirname);

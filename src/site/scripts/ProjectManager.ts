@@ -1,4 +1,5 @@
 import {promises} from "fs";
+import {join} from "path";
 import {ipcRenderer} from "electron";
 import {renderData} from "./Editor";
 import {walk} from "./Util";
@@ -54,15 +55,15 @@ async function setupProject(files: string[]) {
     resetProjectInfo();
 
     for (let file of files) {
-        if ((await promises.stat(projectDir + "/" + file)).isDirectory()) {
+        if ((await promises.stat(join(projectDir, file))).isDirectory()) {
             if (file === "assets") {
                 console.log("Found asset dir!");
-                assetDir = projectDir + "/" + file;
+                assetDir = join(projectDir, file);
             }
 
             if (file === "data") {
                 console.log("Found data dir!");
-                dataDir = projectDir + "/" + file;
+                dataDir = join(projectDir, file);
             }
         }
     }
@@ -89,13 +90,13 @@ async function findNamespaces() {
 async function locateAssets() {
     //Locate blockstates first
     for (let namespace of projectInfo.availableNamespaces) {
-        let files = await promises.readdir(assetDir + "/" + namespace + "/blockstates");
+        let files = await promises.readdir(join(assetDir, namespace, "blockstates"));
 
         for (let file of files) {
-            readBlockState(namespace, file, (await promises.readFile(assetDir + '/' + namespace + '/blockstates/' + file)).toString());
+            readBlockState(namespace, file, (await promises.readFile(join(assetDir, namespace, 'blockstates', file))).toString());
         }
 
-        files = await walk(assetDir + "/" + namespace + "/textures");
+        files = await walk(join(assetDir, namespace, "textures"));
         console.log(files);
     }
 }

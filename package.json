@@ -5,13 +5,15 @@
   "license": "MIT",
   "dependencies": {
     "async-iterator-to-array": "^0.0.1",
+    "bootstrap": "^4.5.3",
     "electron-reload": "^1.5.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",
-    "eslint": "^7.13.0",
     "electron": "^10.1.5",
+    "eslint": "^7.13.0",
+    "jquery": "^3.5.1",
     "typescript": "^4.0.5"
   },
   "scripts": {

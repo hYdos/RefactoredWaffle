@@ -42,8 +42,14 @@ h2 {
     background-color: #363b3f;
 }
 
+body ::-webkit-scrollbar {
+    color: white;
+    width: 5px;
+    height: 8px;
+    background-color: #444A4F; /* or add it to the track */
+}
+
 #right-infopanel {
-    z-index: -1;
     position: absolute;
     width: 30%;
     right: 1%;
@@ -130,11 +136,24 @@ button:focus {
 
 .info-img {
     width: 40%;
-    height: 24%;
+    height: 30%;
     padding-bottom: 5%;
 }
 
 h4 {
     text-align: left;
+}
 
+.tab {
+    border-radius: 5px 5px 0 0;
+    border-top: 1px solid #444A4F;
+    border-left: 1px solid #444A4F;
+    border-right: 1px solid #444A4F;
+}
+
+.tab-seperator {
+    position: fixed;
+    top: 49%;
+    width: 30%;
+    height: 1px;
 }

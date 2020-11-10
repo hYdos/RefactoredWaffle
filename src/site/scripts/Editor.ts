@@ -76,20 +76,20 @@ function getBlockstateByName(blockstateName: string) {
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 document.viewBlockstateInfo =  function viewBlockstateInfo(blockstateName: string) {
-    const infoPannel = document.getElementById("right-infopanel");
-    infoPannel.innerHTML = "";
-    const blockstateImage = document.createElement("img");
-    blockstateImage.setAttribute("class", "info-img");
-    blockstateImage.setAttribute("src", "../assets/placeholder.png");
-    const blockstate = getBlockstateByName(blockstateName);
-    const namespaceText = createH4(blockstate.namespace);
-    const nameText = createH4(blockstate.identifier.replace(blockstate.namespace + ":", ""));
-    const blockstateJson = createH4(JSON.stringify(blockstate.rawJson, undefined, 4));
-
-    infoPannel.appendChild(blockstateImage);
-    infoPannel.appendChild(namespaceText);
-    infoPannel.appendChild(nameText);
-    infoPannel.appendChild(blockstateJson);
+    // const infoPannel = document.getElementById("right-infopanel");
+    // infoPannel.innerHTML = "";
+    // const blockstateImage = document.createElement("img");
+    // blockstateImage.setAttribute("class", "info-img");
+    // blockstateImage.setAttribute("src", "../assets/placeholder.png");
+    // const blockstate = getBlockstateByName(blockstateName);
+    // const namespaceText = createH4(blockstate.namespace);
+    // const nameText = createH4(blockstate.identifier.replace(blockstate.namespace + ":", ""));
+    // const blockstateJson = createH4(JSON.stringify(blockstate.rawJson, undefined, 4));
+    //
+    // infoPannel.appendChild(blockstateImage);
+    // infoPannel.appendChild(namespaceText);
+    // infoPannel.appendChild(nameText);
+    // infoPannel.appendChild(blockstateJson);
 }
 
 function createBlockstateElement(blockStateName: string) {

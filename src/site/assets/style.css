@@ -164,3 +164,17 @@ h4 {
     padding-top: 10px;
     padding-left: 14px;
 }
+
+.flex-stretch {
+    height: 100%;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.flex-center {
+    justify-content: center;
+}
+
+.container-main {
+    position: fixed;
+}

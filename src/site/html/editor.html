@@ -46,47 +46,56 @@
 
     <script src="../scripts/libs/three.js"></script>
 
-    <div id="left-album" class="rounded bg-dark" style="padding-left: 10px">
-        <div class="light-padding">
-            <div class="row" id="blockstate_row">
-            </div>
-        </div>
-    </div>
-    <div id="right-infopanel" class="rounded album bg-dark child-align-middle" style="visibility: visible;">
-        <img class="info-img" src="../assets/placeholder.png">
-        <h4>Namespace: lint</h4>
-        <h4>Path: corrupt_stem</h4>
-        <br>
-        <br>
-        <button class="btn text-white bg-dark tab float-left" onclick="alert('E')">Processed</button>
-        <button class="btn text-white bg-dark tab float-left">Raw</button>
-        <hr class="tab-seperator" style="background-color: #444A4F">
-        <div id="tab_content">
-            <label>Variant:</label>
-            <div class="btn-group">
-                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ""
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </div>
-        </div>
+    <div class="d-flex flex-stretch">
+        <div class="bg-dark flex-center">Flex item 1 <br>Flex item 1 <br>Flex item 1 <br></div>
+        <div class="bg-dark flex-center">Flex item 2</div>
+        <div class="bg-dark flex-center">Flex item 3</div>
     </div>
 
-    <div id="popup" class="container pad-top height-long center-all onTop">
-        <div class="jumbotron secondary-bg-dark">
-            <h1 class="display-4">Asset Manager</h1>
-            <p class="lead text-white">Select an asset/data folder to work on</p>
-            <hr class="my-4">
-            <p class="text-white">Or select a new one</p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg text-white" onclick="openProject();" role="button">Open Assets</a>
-            </p>
-        </div>
-    </div>
+<!--    <div id="left-album" class="rounded bg-dark" style="padding-left: 10px">-->
+<!--        <div class="light-padding">-->
+<!--            <div class="row" id="blockstate_row">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div id="right-infopanel" class="rounded album bg-dark child-align-middle" style="visibility: visible;">-->
+<!--        <img class="info-img" src="../assets/placeholder.png">-->
+<!--        <h4>Namespace: lint</h4>-->
+<!--        <h4>Path: corrupt_stem</h4>-->
+<!--        <br>-->
+<!--        <br>-->
+<!--        <button class="btn text-white bg-dark tab float-left tab-active" onclick="alert('E')">Processed</button>-->
+<!--        <button class="btn text-white bg-dark tab float-left">Raw</button>-->
+<!--        <hr class="tab-seperator" style="background-color: #444A4F">-->
+<!--        <div id="tab_content">-->
+<!--            <label>Variant:</label>-->
+<!--            <div class="btn-group">-->
+<!--                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    ""-->
+<!--                </button>-->
+<!--                <div class="dropdown-menu">-->
+<!--                    <a class="dropdown-item active" href="#">""</a>-->
+<!--                    <a class="dropdown-item" href="#">Some other blockstate variant</a>-->
+<!--                    <a class="dropdown-item" href="#">Some other blockstate variant</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <label class="float-none">-->
+<!--                Models:-->
+<!--            </label>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div id="popup" class="container pad-top height-long center-all onTop">-->
+<!--        <div class="jumbotron secondary-bg-dark">-->
+<!--            <h1 class="display-4">Asset Manager</h1>-->
+<!--            <p class="lead text-white">Select an asset/data folder to work on</p>-->
+<!--            <hr class="my-4">-->
+<!--            <p class="text-white">Or select a new one</p>-->
+<!--            <p class="lead">-->
+<!--                <a class="btn btn-primary btn-lg text-white" onclick="openProject();" role="button">Open Assets</a>-->
+<!--            </p>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <div class="progress secondary-bg-dark" id="prog-bar">
         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"

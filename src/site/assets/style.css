@@ -157,3 +157,9 @@ h4 {
     width: 30%;
     height: 1px;
 }
+
+#tab_content {
+    position: fixed;
+    top: 51%;
+    padding-left: 10px;
+}

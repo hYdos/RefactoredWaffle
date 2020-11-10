@@ -119,6 +119,8 @@ async function locateData() {
 function readBlockState(namespace: string, fileName: string, fileContent: string) {
     let realName = namespace + ":" + fileName.replace(".json", "");
     let json = JSON.parse(fileContent);
+    json.rawJson = json;
+    json.namespace = namespace;
     json.identifier = realName;
     projectInfo.assets.blockStates.push(json);
 }
@@ -127,11 +129,12 @@ function readLangFile(namespace: string, fileName: string, fileContent: string) 
     let realName = namespace + ":" + fileName.replace(".json", "");
     let json = JSON.parse(fileContent);
     json.identifier = realName;
+    json.namespace = namespace;
     projectInfo.assets.langFiles.push(json);
 }
 
 function readTextureFile(namespace: string, fileName: string, relativePath: string, isAnimated: boolean) {
-    let textureJson = {
+    const textureJson = {
         animated: isAnimated,
         namespace: namespace,
         name: fileName,

@@ -119,7 +119,7 @@ async function locateData() {
 function readBlockState(namespace: string, fileName: string, fileContent: string) {
     let realName = namespace + ":" + fileName.replace(".json", "");
     let json = JSON.parse(fileContent);
-    json.rawJson = json;
+    json.rawJson = JSON.parse(fileContent);
     json.namespace = namespace;
     json.identifier = realName;
     projectInfo.assets.blockStates.push(json);

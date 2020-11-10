@@ -84,7 +84,7 @@ document.viewBlockstateInfo =  function viewBlockstateInfo(blockstateName: strin
     const blockstate = getBlockstateByName(blockstateName);
     const namespaceText = createH4(blockstate.namespace);
     const nameText = createH4(blockstate.identifier.replace(blockstate.namespace + ":", ""));
-    const blockstateJson = createH4(blockstate.rawJson);
+    const blockstateJson = createH4(JSON.stringify(blockstate.rawJson, undefined, 4));
 
     infoPannel.appendChild(blockstateImage);
     infoPannel.appendChild(namespaceText);

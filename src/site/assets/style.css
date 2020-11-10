@@ -161,5 +161,6 @@ h4 {
 #tab_content {
     position: fixed;
     top: 51%;
-    padding-left: 10px;
+    padding-top: 10px;
+    padding-left: 14px;
 }

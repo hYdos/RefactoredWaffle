@@ -33,7 +33,6 @@
         }
 
         .tree li div {
-            border: 1px solid #999;
             display: inline-block;
             padding: 8px 24px;
             text-decoration: none;
@@ -49,12 +48,6 @@
 
         .tree li:last-child::before {
             height: 30px;
-        }
-
-        .tree li.parent > div:hover, .tree li.parent > div:hover + ul li div {
-            background: #f3f3f4;
-            border: 1px solid #94a0b4;
-            color: #000;
         }
 
         li div.just-line {
@@ -77,66 +70,79 @@
     </style>
 </head>
 <body>
-<div id="tree" class="tree"></div>
-<script>
-    const data = [
-        {"id": 1, "level": 1, "parent_id": 0, "name": "Board of Director"}, {
-            "id": 2,
-            "level": 2,
-            "parent_id": 1,
-            "name": "Finance Division"
-        }, {"id": 3, "level": 3, "parent_id": 2, "name": "Finance Department"}, {
-            "id": 4,
-            "level": 3,
-            "parent_id": 2,
-            "name": "Sales Department"
-        }, {"id": 5, "level": 3, "parent_id": 1, "name": "HR Division"}],
-        tree = function (data, root) {
-            let r, o = {};
-            data.forEach(function (a) {
-                a.children = o[a.id] && o[a.id].children;
-                o[a.id] = a;
-                if (a.parent_id === root) {
-                    r = a;
-                } else {
-                    o[a.parent_id] = o[a.parent_id] || {};
-                    o[a.parent_id].children = o[a.parent_id].children || [];
-                    o[a.parent_id].children.push(a);
+    <div id="tree" class="tree"></div>
+    <script>
+        const data = [
+                {
+                    "id": 1,
+                    "level": 1,
+                    "parent_id": 0,
+                    "name": "Board of Director"
+                },
+                {
+                    "id": 2,
+                    "level": 2,
+                    "parent_id": 1,
+                    "name": "A Cool tree"
+                },
+                {"id": 3, "level": 3, "parent_id": 2, "name": "Finance Department"
+                },
+                {
+                    "id": 4,
+                    "level": 3,
+                    "parent_id": 2,
+                    "name": "Sales Department"
+                },
+                {
+                    "id": 5, "level": 3, "parent_id": 1, "name": "HR Division"
                 }
-            });
-            return r;
-        }(data, 0),
-        ul = document.createElement('ul');
+                ],
+            tree = function (data, root) {
+                let treeElement, treeChildren = {};
+                data.forEach(function (jsonElement) {
+                    jsonElement.children = treeChildren[jsonElement.id] && treeChildren[jsonElement.id].children;
+                    treeChildren[jsonElement.id] = jsonElement;
+                    if (jsonElement.parent_id === root) {
+                        treeElement = jsonElement;
+                    } else {
+                        treeChildren[jsonElement.parent_id] = treeChildren[jsonElement.parent_id] || {};
+                        treeChildren[jsonElement.parent_id].children = treeChildren[jsonElement.parent_id].children || [];
+                        treeChildren[jsonElement.parent_id].children.push(jsonElement);
+                    }
+                });
+                return treeElement;
+            }(data, 0),
+            ul = document.createElement('ul');
 
-    [tree].forEach(function iter(level) {
-        return function (a) {
-            let li = document.createElement('li'),
-                div = document.createElement('div'),
-                ul,
-                l = level;
+        [tree].forEach(function iter(level) {
+            return function (a) {
+                let li = document.createElement('li'),
+                    div = document.createElement('div'),
+                    ul,
+                    l = level;
 
-            this.appendChild(li);
-            while (++l < a.level) {
-                div.className = 'just-line';
-                li.className = 'no-padding';
+                this.appendChild(li);
+                while (++l < a.level) {
+                    div.className = 'just-line';
+                    li.className = 'no-padding';
+                    li.appendChild(div);
+                    ul = document.createElement('ul');
+                    li.appendChild(ul);
+                    li = document.createElement('li');
+                    ul.appendChild(li);
+                    div = document.createElement('div');
+                }
+                div.appendChild(document.createTextNode(a.name));
                 li.appendChild(div);
-                ul = document.createElement('ul');
-                li.appendChild(ul);
-                li = document.createElement('li');
-                ul.appendChild(li);
-                div = document.createElement('div');
-            }
-            div.appendChild(document.createTextNode(a.name));
-            li.appendChild(div);
 
-            if (a.children) {
-                ul = document.createElement('ul');
-                li.appendChild(ul);
-                a.children.forEach(iter(a.level), ul);
-            }
-        };
-    }(0), ul);
-    document.getElementById('tree').appendChild(ul);
-</script>
+                if (a.children) {
+                    ul = document.createElement('ul');
+                    li.appendChild(ul);
+                    a.children.forEach(iter(a.level), ul);
+                }
+            };
+        }(0), ul);
+        document.getElementById('tree').appendChild(ul);
+    </script>
 </body>
 </html>

@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <!--Bootstrap Css and Js-->
     <link rel="stylesheet" href="../assets/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
     <script>
         window.jQuery = window.$ = require('jquery');
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
     <title>Refactored Waffle</title>
     <link rel="stylesheet" href="../assets/style.css">
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
@@ -46,12 +50,12 @@
 
     <div id="editor" class="d-flex flex-stretch right-content">
         <div class="bg-dark flex-center rounded width-58">
-                <div id="left-album" class="rounded bg-dark" style="padding-left: 10px">
-                    <div class="light-padding">
-                        <div class="row" id="blockstate_row">
-                        </div>
+            <div id="left-album" class="rounded bg-dark" style="padding-left: 10px">
+                <div class="light-padding">
+                    <div class="row" id="blockstate_row">
                     </div>
                 </div>
+            </div>
         </div>
         <div class="bg-dark flex-center rounded width-40">
             <div class="d-flex flex-column pad-left" id="right_info">
@@ -60,7 +64,9 @@
                 <label>Path: corrupt_stem</label>
                 <br>
                 <div class="d-flex flex-row">
-                    <button class="btn text-white bg-dark tab align-self-start tab-active" onclick="alert('E')">Processed</button>
+                    <button class="btn text-white bg-dark tab align-self-start tab-active" onclick="alert('E')">
+                        Processed
+                    </button>
                     <button class="btn text-white bg-dark tab align-self-start">Raw</button>
                 </div>
                 <hr class="line">
@@ -69,7 +75,8 @@
                         Variant:
                     </label>
                     <div class="btn-group">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle pad-lef" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle pad-lef" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             ""
                         </button>
                         <div class="dropdown-menu">
@@ -79,37 +86,42 @@
                         </div>
                     </div>
                 </div>
-                <br>
-                <label>
-                    Models:
-                </label>
+                <div id="tree" class="tree">
+                    <ul>
+                        <li>
+                            <ul>
+                                <li>
+                                    <div>model</div>
+                                    <ul>
+                                        <li>
+                                            <div>lint:block/lively_grass</div>
+                                        </li>
+                                        <li>
+                                            <div>lint:lively_grass_mirrored</div>
+                                        </li>
+                                        <li>
+                                            <div>lint:block/lively_grass</div>
+                                            <ul>
+                                                <li>
+                                                    y = 180
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <div>lint:lively_grass_mirrored</div>
+                                            <ul>
+                                                <li>
+                                                    y = 180
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-<!--                <div id="right-infopanel" class="rounded bg-dark" style="visibility: visible;">-->
-<!--                    <img class="info-img" src="../assets/placeholder.png">-->
-<!--                    <h4>Namespace: lint</h4>-->
-<!--                    <h4>Path: corrupt_stem</h4>-->
-<!--                    <br>-->
-<!--                    <br>-->
-<!--                    <button class="btn text-white bg-dark tab float-left tab-active" onclick="alert('E')">Processed</button>-->
-<!--                    <button class="btn text-white bg-dark tab float-left">Raw</button>-->
-<!--                    <hr class="tab-seperator" style="background-color: #444A4F">-->
-<!--                    <div id="tab_content">-->
-<!--                        <label>Variant:</label>-->
-<!--                        <div class="btn-group">-->
-<!--                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                                ""-->
-<!--                            </button>-->
-<!--                            <div class="dropdown-menu">-->
-<!--                                <a class="dropdown-item active" href="#">""</a>-->
-<!--                                <a class="dropdown-item" href="#">Some other blockstate variant</a>-->
-<!--                                <a class="dropdown-item" href="#">Some other blockstate variant</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <label class="float-none">-->
-<!--                            Models:-->
-<!--                        </label>-->
-<!--                    </div>-->
-<!--                </div>-->
         </div>
     </div>
 

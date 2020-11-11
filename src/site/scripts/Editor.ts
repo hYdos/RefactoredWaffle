@@ -6,8 +6,7 @@ import {ipcRenderer} from "electron";
 let currentEditor = "blockstate_editor";
 
 document.getElementById("editor_selector").style.visibility = "hidden";
-document.getElementById("left-album").style.visibility = "hidden";
-document.getElementById("right-infopanel").style.visibility = "hidden";
+document.getElementById("editor").style.visibility = "hidden";
 
 // const scene = new THREE.Scene();
 // const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -45,12 +44,10 @@ window.openEditor = openEditor;
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function renderData() {
     clearElements();
-    document.getElementById("left-album").style.visibility = "hidden";
-    document.getElementById("right-infopanel").style.visibility = "hidden";
+    document.getElementById("editor").style.visibility = "hidden";
 
     if (currentEditor === "blockstate_editor") {
-        document.getElementById("left-album").style.visibility = "visible";
-        document.getElementById("right-infopanel").style.visibility = "visible";
+        document.getElementById("editor").style.visibility = "visible";
         for (const blockstateElement of projectInfo.assets.blockStates) {
             createBlockstateElement(blockstateElement.identifier);
         }

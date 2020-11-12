@@ -59,69 +59,57 @@
         </div>
         <div class="bg-dark flex-center rounded width-40">
             <div class="d-flex flex-column pad-left" id="right_info">
-                <img class="info-img align-self-center" src="../assets/placeholder.png">
-                <label>Namespace: lint</label>
-                <label>Path: corrupt_stem</label>
-                <br>
-                <div class="d-flex flex-row">
-                    <button class="btn text-white bg-dark tab align-self-start tab-active" onclick="alert('E')">
-                        Processed
-                    </button>
-                    <button class="btn text-white bg-dark tab align-self-start">Raw</button>
-                </div>
-                <hr class="line">
-                <br>
-                <div class="d-flex flex-row">
-                    <label class="pad-right">
-                        Variant:
-                    </label>
-                    <div class="btn-group">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle pad-lef" type="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ""
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item active" href="#">""</a>
-                            <a class="dropdown-item" href="#">Some other blockstate variant</a>
-                            <a class="dropdown-item" href="#">Some other blockstate variant</a>
-                        </div>
-                    </div>
-                </div>
-                <div id="tree" class="tree">
-                    <ul>
-                        <li>
-                            <ul>
-                                <li>
-                                    <div>model</div>
-                                    <ul>
-                                        <li>
-                                            <div>lint:block/lively_grass</div>
-                                        </li>
-                                        <li>
-                                            <div>lint:lively_grass_mirrored</div>
-                                        </li>
-                                        <li>
-                                            <div>lint:block/lively_grass</div>
-                                            <ul>
-                                                <li>
-                                                    y = 180
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <div>lint:lively_grass_mirrored</div>
-                                            <ul>
-                                                <li>
-                                                    y = 180
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+<!--                <div class="d-flex flex-row">-->
+<!--                    <label class="pad-right">-->
+<!--                        Variant:-->
+<!--                    </label>-->
+<!--                    <div class="btn-group">-->
+<!--                        <button class="btn btn-secondary btn-sm dropdown-toggle pad-lef" type="button"-->
+<!--                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            ""-->
+<!--                        </button>-->
+<!--                        <div class="dropdown-menu">-->
+<!--                            <a class="dropdown-item active" href="#">""</a>-->
+<!--                            <a class="dropdown-item" href="#">Some other blockstate variant</a>-->
+<!--                            <a class="dropdown-item" href="#">Some other blockstate variant</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div id="tree" class="tree">-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            <ul>-->
+<!--                                <li>-->
+<!--                                    <div>model</div>-->
+<!--                                    <ul>-->
+<!--                                        <li>-->
+<!--                                            <div>lint:block/lively_grass</div>-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            <div>lint:lively_grass_mirrored</div>-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            <div>lint:block/lively_grass</div>-->
+<!--                                            <ul>-->
+<!--                                                <li>-->
+<!--                                                    y = 180-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            <div>lint:lively_grass_mirrored</div>-->
+<!--                                            <ul>-->
+<!--                                                <li>-->
+<!--                                                    y = 180-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
             </div>
         </div>
     </div>
@@ -142,6 +130,7 @@
              aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
     </div>
     <script>
+        require('../scripts/htmlBuilder');
         require('../scripts/Editor');
         require('../scripts/ProjectManager');
     </script>

@@ -1,5 +1,7 @@
 import {projectInfo} from "./ProjectManager";
 import {ipcRenderer} from "electron";
+import {HtmlBuilder} from "./htmlBuilder";
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 // const THREE = require('three');
 
@@ -54,8 +56,8 @@ export function renderData() {
     }
 }
 
-function createH4(namespace: any) {
-    const element = document.createElement("h4");
+function createText(namespace: string) {
+    const element = document.createElement("label");
     element.innerText = namespace;
     return element;
 }
@@ -72,21 +74,52 @@ function getBlockstateByName(blockstateName: string) {
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
+
+
 document.viewBlockstateInfo =  function viewBlockstateInfo(blockstateName: string) {
-    // const infoPannel = document.getElementById("right-infopanel");
-    // infoPannel.innerHTML = "";
-    // const blockstateImage = document.createElement("img");
-    // blockstateImage.setAttribute("class", "info-img");
-    // blockstateImage.setAttribute("src", "../assets/placeholder.png");
-    // const blockstate = getBlockstateByName(blockstateName);
-    // const namespaceText = createH4(blockstate.namespace);
-    // const nameText = createH4(blockstate.identifier.replace(blockstate.namespace + ":", ""));
-    // const blockstateJson = createH4(JSON.stringify(blockstate.rawJson, undefined, 4));
-    //
-    // infoPannel.appendChild(blockstateImage);
-    // infoPannel.appendChild(namespaceText);
-    // infoPannel.appendChild(nameText);
-    // infoPannel.appendChild(blockstateJson);
+    const infoPannel = document.getElementById("right_info");
+    infoPannel.innerHTML = "";
+    const blockstateImage = document.createElement("img");
+    blockstateImage.setAttribute("class", "info-img align-self-center");
+    blockstateImage.setAttribute("src", "../assets/placeholder.png");
+    const blockstate = getBlockstateByName(blockstateName);
+    const namespaceText = createText("Namespace: " + blockstate.namespace);
+    const nameText = createText("Path: " + blockstate.identifier.replace(blockstate.namespace + ":", ""));
+
+    //Create the tab thing
+    const tabFlexbox = document.createElement("div");
+    const processedTab = document.createElement("button");
+    const rawTab = document.createElement("button");
+    const tabSeparator = document.createElement("hr");
+
+    //Test new html lib
+    const variantText = new HtmlBuilder("label")
+        .setClasses("pad-right")
+        .setText("Variant:");
+
+    const variantDropdown = new HtmlBuilder("div")
+        .setClasses("d-flex flex-row");
+
+    tabFlexbox.setAttribute("class", "d-flex flex-row");
+    processedTab.setAttribute("class", "btn text-white bg-dark tab align-self-start");
+    rawTab.setAttribute("class", "btn text-white bg-dark tab align-self-start");
+    processedTab.setAttribute("onClick", "alert('not finished!')");
+    processedTab.setAttribute("onClick", "alert('not finished!')");
+    processedTab.innerText = "Processed";
+    rawTab.innerText = "Raw";
+    tabSeparator.setAttribute("class", "line");
+    //TODO: parse blockstate.rawJson
+
+    tabFlexbox.appendChild(processedTab);
+    tabFlexbox.appendChild(rawTab);
+
+    infoPannel.appendChild(blockstateImage);
+    infoPannel.appendChild(namespaceText);
+    infoPannel.appendChild(nameText);
+    infoPannel.appendChild(document.createElement("br"));
+    infoPannel.appendChild(tabFlexbox);
+    infoPannel.appendChild(tabSeparator);
+    infoPannel.appendChild(document.createElement("br"));
 }
 
 function createBlockstateElement(blockStateName: string) {

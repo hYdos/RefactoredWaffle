@@ -31,8 +31,8 @@
                 {
                     "id": 5, "level": 3, "parent_id": 1, "name": "HR Division"
                 }
-                ],
-            tree = function (data, root) {
+                ];
+            function tree (data, root) {
                 let treeElement, treeChildren = {};
                 data.forEach(function (jsonElement) {
                     jsonElement.children = treeChildren[jsonElement.id] && treeChildren[jsonElement.id].children;

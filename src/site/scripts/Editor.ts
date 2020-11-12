@@ -10,13 +10,6 @@ let currentEditor = "blockstate_editor";
 document.getElementById("editor_selector").style.visibility = "hidden";
 document.getElementById("editor").style.visibility = "hidden";
 
-// const scene = new THREE.Scene();
-// const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-//
-// const renderer = new THREE.WebGLRenderer();
-// renderer.setSize( window.innerWidth, window.innerHeight );
-// document.body.appendChild( renderer.domElement );
-
 function openEditor(editor_name: string) {
     for (const child of [...document.getElementById("editor_selector").children]) {
         if (child.getAttribute("id") === editor_name) {
@@ -34,7 +27,6 @@ function openProject() {
 }
 
 // Let DOM know about this
-
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 window.openProject = openProject;
@@ -56,12 +48,6 @@ export function renderData() {
     }
 }
 
-function createText(namespace: string) {
-    const element = document.createElement("label");
-    element.innerText = namespace;
-    return element;
-}
-
 function getBlockstateByName(blockstateName: string) {
     for(const blockstateId in projectInfo.assets.blockStates) {
         const blockstate = projectInfo.assets.blockStates[blockstateId];
@@ -79,36 +65,64 @@ function getBlockstateByName(blockstateName: string) {
 document.viewBlockstateInfo =  function viewBlockstateInfo(blockstateName: string) {
     const infoPannel = document.getElementById("right_info");
     infoPannel.innerHTML = "";
-    const blockstateImage = document.createElement("img");
-    blockstateImage.setAttribute("class", "info-img align-self-center");
-    blockstateImage.setAttribute("src", "../assets/placeholder.png");
     const blockstate = getBlockstateByName(blockstateName);
-    const namespaceText = createText("Namespace: " + blockstate.namespace);
-    const nameText = createText("Path: " + blockstate.identifier.replace(blockstate.namespace + ":", ""));
 
-    //Create the tab thing
-    const tabFlexbox = document.createElement("div");
-    const processedTab = document.createElement("button");
-    const rawTab = document.createElement("button");
-    const tabSeparator = document.createElement("hr");
+    const blockstateImage = new HtmlBuilder("img")
+        .setClasses("info-img align-self-center")
+        .setSrc("../assets/placeholder.png")
+        .build();
 
-    //Test new html lib
-    const variantText = new HtmlBuilder("label")
-        .setClasses("pad-right")
-        .setText("Variant:");
+    const namespaceText = new HtmlBuilder("label")
+        .setText("Namespace: " + blockstate.namespace)
+        .build();
+
+    const nameText = new HtmlBuilder("label")
+        .setText("Path: " + blockstate.identifier.replace(blockstate.namespace + ":", ""))
+        .build();
+
+    const tabFlexbox = new HtmlBuilder("div")
+        .setClasses("d-flex flex-row")
+        .build();
+
+    const processedTab = new HtmlBuilder("button")
+        .setClasses("btn text-white bg-dark tab align-self-start")
+        .setText("Processed")
+        .onClick("alert('not finished!')")
+        .build();
+
+    const rawTab = new HtmlBuilder("button")
+        .setClasses("btn text-white bg-dark tab align-self-start")
+        .setText("Raw")
+        .onClick("alert('not finished!')")
+        .build();
+
+    const tabSeparator = new HtmlBuilder("hr")
+        .setClasses("line")
+        .build();
 
     const variantDropdown = new HtmlBuilder("div")
-        .setClasses("d-flex flex-row");
+        .setClasses("d-flex flex-row")
+        .build();
 
-    tabFlexbox.setAttribute("class", "d-flex flex-row");
-    processedTab.setAttribute("class", "btn text-white bg-dark tab align-self-start");
-    rawTab.setAttribute("class", "btn text-white bg-dark tab align-self-start");
-    processedTab.setAttribute("onClick", "alert('not finished!')");
-    processedTab.setAttribute("onClick", "alert('not finished!')");
-    processedTab.innerText = "Processed";
-    rawTab.innerText = "Raw";
-    tabSeparator.setAttribute("class", "line");
-    //TODO: parse blockstate.rawJson
+    const variantText = new HtmlBuilder("label")
+        .setClasses("pad-right")
+        .setText("Variant:")
+        .build();
+
+    const variantButtonGroup = new HtmlBuilder("div")
+        .setClasses("btn-group")
+        .build();
+
+    const firstVariantKey = Object.keys(blockstate.variants)[0];
+    for (const variantKey in blockstate.variants) {
+        const variant = blockstate.variants[variantKey];
+        console.log(firstVariantKey + "->" + variantKey);
+        if(firstVariantKey !== variantKey){
+            console.log(variant);
+        }
+    }
+
+    variantDropdown.appendChild(variantText);
 
     tabFlexbox.appendChild(processedTab);
     tabFlexbox.appendChild(rawTab);

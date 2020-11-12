@@ -17,21 +17,36 @@ export class HtmlBuilder {
 
     setText(text: string): any {
         this.htmlObject.innerText = text;
+        return this;
+    }
+
+    setSrc(text: string): any {
+        this.htmlObject.setAttribute("src", text);
+        return this;
+    }
+
+    onClick(text: string): any {
+        this.htmlObject.setAttribute("onClick", text);
+        return this;
     }
 
     removeChildren(): any {
         this.htmlObject.innerHTML = "";
+        return this;
     }
 
     appendChild(child: HtmlBuilder): any {
-        this.htmlObject.appendChild(child.build());
+        this.htmlObject.appendChild(child);
+        return this;
     }
 
     appendRawChild(child: any): any {
         this.htmlObject.appendChild(child);
+        return this;
     }
 
     build(): any {
         return this.htmlObject;
+        return this;
     }
 }

@@ -93,8 +93,8 @@ function createRenderConfig(isDev) {
             }),
 
             new HtmlPlugin({
-                filename: "index.html",
-                template: "index.html",
+                filename: "site/html/index.html",
+                template: "site/html/index.html",
                 cache: true,
             }),
 

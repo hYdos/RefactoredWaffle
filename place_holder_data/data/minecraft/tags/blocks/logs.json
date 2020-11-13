@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "lint:mystical_log",
-    "lint:corrupt_log"
-  ]
-}

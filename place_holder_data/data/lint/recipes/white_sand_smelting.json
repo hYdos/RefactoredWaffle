@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "lint:white_sand"
-  },
-  "result": "minecraft:white_stained_glass",
-  "experience": 0.75,
-  "cookingtime": 200
-}
